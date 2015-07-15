@@ -16,7 +16,7 @@ def main(args):
   def valid(match):
     return match['parse_status'] == 2 and str(match['players'][0]['hero_id']) == hero_id
 
-  valid_matches = filter(valid, json['matches'])
+  valid_matches = filter(valid, json['data'])
 
   for match in valid_matches:
     match_id = match['match_id']
