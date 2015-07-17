@@ -1,14 +1,12 @@
-import ConfigParser
 import os
 import requests
 from subprocess import call
 import sys
+import yasp_util
 
 def main(args):
-  config = ConfigParser.ConfigParser()
-  config.read('yasp.cfg')
-  player_id = config.get('yasp', 'player_id')
-  hero_id = config.get('yasp', 'hero_id')
+  player_id = yasp_util.get_player_id()
+  hero_id = yasp_util.get_hero_id()
 
   req = requests.get("http://yasp.co/players/{0}/matches?json=1".format(player_id))
   json = req.json()

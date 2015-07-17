@@ -1,13 +1,11 @@
-import ConfigParser
 import json
 import os
 import sys
+import yasp_util
 
 def main(args):
-  config = ConfigParser.ConfigParser()
-  config.read('yasp.cfg')
-  player_id = config.get('yasp', 'player_id')
-  hero_id = config.get('yasp', 'hero_id')
+  player_id = yasp_util.get_player_id()
+  hero_id = yasp_util.get_hero_id()
   wins = 0
   losses = 0
 
