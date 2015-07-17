@@ -15,5 +15,5 @@ def get_hero_data():
   file = open("heroes.json")
   data = json.load(file)
   file.close()
-  return data
+  return dict([hero['id'], hero] for hero in data['heroes'])
 
