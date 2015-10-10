@@ -12,10 +12,13 @@ def main(args):
   json = req.json()
 
   def valid(match):
-    return match['parse_status'] == 2 and str(match['players'][0]['hero_id']) == hero_id
+    return ('parse_status' in match and
+           match['parse_status'] == 2 and
+           str(match['players'][0]['hero_id']) == hero_id)
 
   valid_matches = filter(valid, json['data'])
-
+  if not os.path.exists('matches'):
+    os.makedirs('matches')
   for match in valid_matches:
     match_id = match['match_id']
     file_name = 'matches/{0}.json'.format(match_id)
