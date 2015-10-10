@@ -26,7 +26,7 @@ def main(args):
     games = data['games']
     losses = games - wins
     hero_info = hero_data[int(data['hero_id'])]
-    print "{0}: {1}W {2}L {3}%".format(hero_info['localized_name'], wins, losses, 100.0*wins/games)
+    print "{0}: {1}W {2}L {3:.2%}".format(hero_info['localized_name'], wins, losses, float(wins)/games)
 
 
 if __name__ == "__main__":
